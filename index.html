@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>JS Assignment1</title>
+</head>
+<body>
+    <h1 id="f1">DOM HANDSON</h1>
+<pre>
+<p class="pa">Q1) Write the code to access element which is having id as "text".
+A1) var first=document.getElementById("text")
+    console.log(first.innerHTML)
+
+    <p id="text">O/P -> Welcome to Prepbytes</p></p>
+<hr>
+Q2) Write the code to access element which is having tag as "h1"
+A2) var second=document.getElementsByTagName("h1")
+    console.log(second[0].innerHTML)
+
+    <h1>O/P -> Welcome to Prepbytes1</h1>
+<hr>
+Q3) Write the code to access element which is having class as "box"
+A3) var third=document.getElementsByClassName('box')
+    console.log(third[0].innerHTML)
+
+    <p class="box">O/P -> I am a box</p>
+<hr>    
+Q4) Change the heading from "Hello" to "Hello World" using DOM functions.
+A3)var changeText=document.getElementsByClassName('changeText')
+    changeText[0].addEventListener('click',()=>{
+    changeText[0].innerHTML="Hello World"
+    })
+
+    <span class="sp1">Click on Hello</span>
+        <h2 class="changeText">O/P-> Hello</h2>
+<hr>
+Q5) Create an HTML page having content as Hello world and a button named Replace Text. When user will click on this button page
+    content should be changed to "Welcome to Elevation academy"
+A5) var changetext1=document.getElementsByClassName("changetext1")
+    let count=0
+    function change(){
+        if(count%2==0){
+        changetext1[0].innerHTML="Welcome to Elevation Academy"
+        count++
+        }
+        else{
+        changetext1[0].innerHTML="Hello World"
+        count--
+        }
+    }
+
+<h1 class="changetext1">O/P -> Hello World</h1>
+<button class="btn" onclick="change()">Replace Text</button> 
+
+<hr>
+
+Q6) Add one style attribute and give text color as red and id attribute and give the id value as "heading" in the above given h1 tag 
+    using DOM functions
+A6) let count1=0
+    var changecolor=document.getElementById("heading")
+        changecolor.addEventListener('click',()=>{
+        if(count1%2===0){
+                changecolor.style.color="red"
+                count1++
+        }
+        else{
+                changecolor.style.color="black"
+                count1--
+            
+        }
+
+
+    })
+
+    <span class="sp1">Click on Hello</span> 
+    <h1 id="heading">Hello</h1>
+<hr>
+
+Q7)Create three cards on HTML page and arrange them using flex property in row or horizontal direction and also create button
+    at the bottom named "Change Flex direction". When user clicks on this button, the cards arrangement should be changed to 
+    vertical direction.
+A3) let parent=document.querySelector('.parent')
+    let flag="true"
+    function changeDirection(){
+        if(flag==="true"){
+        parent.style.display="block"
+        flag="false"
+        }
+        else{
+        parent.style.display="flex"
+        flag="true"
+        }
+    }
+
+    
+    <div class="parent"><h2>O/P -></h2>
+        <div class="child">  1</div>
+        <div class="child">  2</div>
+        <div class="child">  3</div>
+    </div>
+
+    <button class="btn" onclick="changeDirection()">Change Direction</button>
+
+<hr>
+
+Q8)Difference between window vs document?
+A8) 
+    <table>
+        <tr>
+            <th colspan="2">Window</th>
+            <th>Document</th>
+        </tr>
+        <tr>
+            <td> 1. </td>
+            <td> It represents any HTML document or web page that 
+ is loaded in the browser.</td>
+            <td> It represents a browser window or frame that
+ displays the contents of the webpage.  </td>
+        </tr>
+        <tr>
+            <td> 2. </td>
+            <td> It is loaded inside the window.</td>
+            <td> It is the very first object that is loaded in the
+ browse</td>
+        </tr>
+        <tr>
+            <td> 3. </td>
+            <td> It is the object of window property.</td>
+            <td> It is the object of the browser</td>
+        </tr>
+        <tr>
+            <td> 4. </td>
+            <td> All the tags, elements with attributes in HTML are
+ part of the document.</td>
+            <td> Global objects, functions, and variables of JavaScript
+ are members of the window object.</td>
+        </tr>
+        <tr>
+            <td> 5. </td>
+            <td> We can access the document from a window using the
+ window. document</td>
+            <td> We can access the window from the window only.
+ i.e. window.window</td>
+        </tr>
+        <tr>
+            <td> 6. </td>
+            <td> Properties of document objects such as title, body,
+ cookies, etc can also be accessed by a window like this
+ window. document.title</td>
+            <td> Properties of the window object cannot be accessed
+ by the document object.</td>
+        </tr>
+        <tr>
+            <td> 7. </td>
+            <td> syntax:    document.propertyname;</td>
+            <td> syntax:    window.propertyname;</td>
+        </tr>
+        <tr>
+            <td> 8.</td>
+            <td> example:   document.title :  will return the title 
+ of the document</td>
+            <td> example:   window.innerHeight : will return the height
+ of the content area of the browser</td>
+        </tr>
+    </table>    
+
+<hr>
+
+Q9)Write code to implement timer clock using JS -- display HH:MM:SS -- the time should keep updating every second
+A9)let display=document.querySelectorAll('.clock')
+    display[0].addEventListener('click',()=>{
+    function startClock(){
+        let time = new Date();
+        let hrs=time.getHours();
+        let min=time.getMinutes();
+        let sec=time.getSeconds();
+        let ampm='am'
+        if(hrs>12){
+            hrs=hrs%12;
+            ampm='pm'
+            console.log(`Time: ${hrs}:${min}:${sec} ${ampm}`)
+        }
+        else{
+            
+           console.log(`Time: ${hrs}:${min}:${sec} ${ampm}`)
+
+        }
+    display[1].innerHTML=`Time: ${hrs}:${min}:${sec} ${ampm}`
+    }
+
+    setInterval(()=>{
+        startClock();
+    },1000)
+    })
+ 
+    <h1 class="clock">Click -> Start Clock</h1>
+    <h1 class="clock"></h1>
+
+<hr>   
+
+Q10) Guess the random number game.
+A10)
+    <a href="./index1.html">Click on the link for random number game</a>
+
+</pre>
+
+<script src="./script.js"></script>
+</body>
+</html>
